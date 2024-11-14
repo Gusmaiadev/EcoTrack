@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#274BFF">
+
+    <!-- Botão Voltar -->
+    <ImageButton
+        android:id="@+id/btnVoltar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="48dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/voltar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Container Principal -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- Título -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="40dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_bold"
+                android:text="Dicas"
+                android:textColor="@android:color/white"
+                android:textSize="32sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:src="@drawable/raio_menor" />
+        </LinearLayout>
+
+        <!-- Grid de Botões -->
+        <GridLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:columnCount="2"
+            android:rowCount="3">
+
+            <!-- Geladeira -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/btnGeladeira"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:background="@null"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/geladeira_btn" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="Geladeira"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <!-- Televisão -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/btnTelevisao"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:background="@null"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/televisao_btn" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="Televisão"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <!-- Microondas -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/btnMicroondas"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:background="@null"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/microondas_btn" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="Microondas"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <!-- Chuveiro -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/btnChuveiro"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:background="@null"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/chuveiro_btn" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="Chuveiro"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <!-- Fogão -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/btnFogao"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:background="@null"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/fogao_btn" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="Fogão"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <!-- Luz -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/btnLuz"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:background="@null"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/luz_btn" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="Luz"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+        </GridLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
