@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#274BFF">
+
+    <!-- Título -->
+    <LinearLayout
+        android:id="@+id/titleContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/inputContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_bold"
+            android:text="Cadastrar\nEletrométricos"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="32sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:src="@drawable/raio_menor" />
+    </LinearLayout>
+
+    <!-- Container dos Inputs -->
+    <LinearLayout
+        android:id="@+id/inputContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- Spinner Eletrodoméstico -->
+        <Spinner
+            android:id="@+id/spinnerEletrodomestico"
+            android:layout_width="327dp"
+            android:layout_height="63dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/rounded_input"
+            android:paddingHorizontal="16dp"
+            android:popupBackground="@android:color/white"/>
+
+        <!-- Spinner Marca -->
+        <Spinner
+            android:id="@+id/spinnerMarca"
+            android:layout_width="327dp"
+            android:layout_height="63dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/rounded_input"
+            android:paddingHorizontal="16dp"
+            android:popupBackground="@android:color/white"/>
+
+        <!-- EditText Quantidade -->
+        <EditText
+            android:id="@+id/editQuantidade"
+            android:layout_width="327dp"
+            android:layout_height="63dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/rounded_input"
+            android:fontFamily="@font/poppins_medium"
+            android:hint="Quantidade"
+            android:inputType="number"
+            android:paddingHorizontal="16dp"
+            android:textColor="#000000"
+            android:textColorHint="#000000"
+            android:textSize="16dp" />
+
+        <!-- EditText Horas usada no dia -->
+        <EditText
+            android:id="@+id/editHorasUsadas"
+            android:layout_width="327dp"
+            android:layout_height="63dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/rounded_input"
+            android:fontFamily="@font/poppins_medium"
+            android:hint="Horas usada no dia"
+            android:inputType="numberDecimal"
+            android:paddingHorizontal="16dp"
+            android:textColorHint="#000000"
+            android:textSize="16dp" />
+
+        <!-- EditText Vezes usado na semana -->
+        <EditText
+            android:id="@+id/editVezesUsado"
+            android:layout_width="327dp"
+            android:layout_height="63dp"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/rounded_input"
+            android:fontFamily="@font/poppins_medium"
+            android:hint="Vezes usado na semana"
+            android:inputType="number"
+            android:paddingHorizontal="16dp"
+            android:textColorHint="#000000"
+            android:textSize="16dp" />
+
+        <!-- Botão Cadastrar -->
+        <Button
+            android:id="@+id/btnCadastrar"
+            android:layout_width="327dp"
+            android:layout_height="63dp"
+            android:backgroundTint="#FF5722"
+            android:fontFamily="@font/poppins_extrabold"
+            android:text="Cadastrar"
+            android:textColor="@android:color/white"
+            android:textSize="16dp" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
