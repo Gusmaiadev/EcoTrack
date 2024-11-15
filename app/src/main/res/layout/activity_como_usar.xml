@@ -34,7 +34,7 @@
         app:srcCompat="@drawable/raio_menor" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/btnVol"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -76,7 +76,7 @@
         app:layout_constraintVertical_bias="0.291" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/possui_cadastro"
         android:layout_width="304dp"
         android:layout_height="90dp"
         android:fontFamily="@font/poppins_medium"

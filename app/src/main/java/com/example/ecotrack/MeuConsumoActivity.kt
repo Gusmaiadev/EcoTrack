@@ -1,10 +1,9 @@
 package com.example.ecotrack
 
 import android.os.Bundle
+import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 
 class MeuConsumoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -12,5 +11,8 @@ class MeuConsumoActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_meu_consumo)
 
+        findViewById<ImageView>(R.id.btnVol).setOnClickListener {
+            finish()
+        }
     }
 }

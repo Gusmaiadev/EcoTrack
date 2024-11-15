@@ -36,7 +36,7 @@
         app:srcCompat="@drawable/raio_menor" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/btnVol"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -122,7 +122,7 @@
         app:layout_constraintVertical_bias="0.738" />
 
     <Button
-        android:id="@+id/btnLogin"
+        android:id="@+id/proxDica"
         android:layout_width="232dp"
         android:layout_height="57dp"
         android:backgroundTint="#FF5733"

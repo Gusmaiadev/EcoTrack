@@ -1,10 +1,10 @@
 package com.example.ecotrack
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 
 class InicialActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -12,5 +12,18 @@ class InicialActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_inicial)
 
+        val btnLogin = findViewById<Button>(R.id.btnLoginEntrar)
+        val btnCadastrar = findViewById<Button>(R.id.btnCadastrar)
+
+
+        btnLogin.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+        }
+
+        btnCadastrar.setOnClickListener {
+            val intent = Intent(this, CadastroActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

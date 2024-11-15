@@ -33,7 +33,7 @@
         app:srcCompat="@drawable/raio_menor" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/btnVol"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"

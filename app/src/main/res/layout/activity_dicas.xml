@@ -7,7 +7,7 @@
 
     <!-- Botão Voltar -->
     <ImageButton
-        android:id="@+id/btnVoltar"
+        android:id="@+id/btnVol"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
