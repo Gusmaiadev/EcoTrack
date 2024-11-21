@@ -138,7 +138,7 @@ class CadastroEletrodomesticosActivity : AppCompatActivity() {
 
             val request = UserApplianceRequest(
                 appliance_id = selectedAppliance.id,
-                hoursUsedPerDay = horasUsadas,
+                minutesUsedPerDay = editHorasUsadas.text.toString().toInt(), // Enviando minutos diretamente
                 daysUsedPerWeek = vezesUsado
             )
 

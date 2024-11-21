@@ -1,5 +1,5 @@
 data class UserApplianceRequest(
     val appliance_id: Long,
-    val hoursUsedPerDay: Double,
+    val minutesUsedPerDay: Int,
     val daysUsedPerWeek: Int
 )

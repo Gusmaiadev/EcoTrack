@@ -71,7 +71,7 @@
             android:layout_marginBottom="16dp"
             android:background="@drawable/rounded_input"
             android:fontFamily="@font/poppins_medium"
-            android:hint="Horas usada no dia"
+            android:hint="Minutos usado no dia"
             android:inputType="numberDecimal"
             android:paddingHorizontal="16dp"
             android:textColorHint="#000000"
