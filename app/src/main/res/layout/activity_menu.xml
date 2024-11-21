@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#274BFF">
 
-    <!-- Container para centralizar todo o conteúdo -->
+    <!-- Container Principal -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,6 +16,7 @@
 
         <!-- Container do título -->
         <LinearLayout
+            android:id="@+id/titleContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -43,7 +44,7 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/cardConsumo"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="240dp"
             android:layout_marginHorizontal="24dp"
             android:layout_marginBottom="32dp"
             app:cardCornerRadius="16dp"
@@ -56,21 +57,20 @@
                 android:orientation="vertical"
                 android:padding="16dp">
 
-                <ImageView
-                    android:id="@+id/imageViewMedidor"
-                    android:layout_width="195dp"
-                    android:layout_height="130dp"
-                    android:src="@drawable/medidor" />
+                <com.example.ecotrack.view.ConsumptionMeterView
+                    android:id="@+id/consumptionMeter"
+                    android:layout_width="160dp"
+                    android:layout_height="160dp"
+                    android:layout_marginBottom="8dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
                     android:fontFamily="@font/poppins_extrabold"
                     android:text="Meu consumo"
                     android:textColor="#FF5722"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textSize="18sp" />
+
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
