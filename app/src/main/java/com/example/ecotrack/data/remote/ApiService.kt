@@ -3,6 +3,7 @@ package com.example.ecotrack.data.remote
 import Appliance
 import ConsumptionReport
 import LoginResponse
+import MonthlyReport
 import UserApplianceRequest
 import com.example.ecotrack.data.model.LoginRequest
 import com.example.ecotrack.data.model.SignupRequest
@@ -31,5 +32,8 @@ interface ApiService {
 
     @GET("userAppliance/report")
     suspend fun getConsumptionReport(): Response<ConsumptionReport>
+
+    @GET("userAppliance/report/monthYear")
+    suspend fun getMonthlyReports(): Response<List<MonthlyReport>>
 
 }
