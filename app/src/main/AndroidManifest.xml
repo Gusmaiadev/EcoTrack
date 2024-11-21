@@ -83,6 +83,10 @@
             android:exported="false" />
 
         <activity
+            android:name=".CadastroSucessoActivity"
+            android:exported="false" />
+
+        <activity
             android:name=".DicaLuzActivity"
             android:exported="false"
             tools:ignore="DuplicateActivity" />
