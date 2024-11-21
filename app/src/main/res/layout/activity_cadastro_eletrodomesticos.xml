@@ -62,30 +62,6 @@
             android:paddingHorizontal="16dp"
             android:popupBackground="@android:color/white"/>
 
-        <!-- Spinner Marca -->
-        <Spinner
-            android:id="@+id/spinnerMarca"
-            android:layout_width="327dp"
-            android:layout_height="63dp"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/rounded_input"
-            android:paddingHorizontal="16dp"
-            android:popupBackground="@android:color/white"/>
-
-        <!-- EditText Quantidade -->
-        <EditText
-            android:id="@+id/editQuantidade"
-            android:layout_width="327dp"
-            android:layout_height="63dp"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/rounded_input"
-            android:fontFamily="@font/poppins_medium"
-            android:hint="Quantidade"
-            android:inputType="number"
-            android:paddingHorizontal="16dp"
-            android:textColor="#000000"
-            android:textColorHint="#000000"
-            android:textSize="16dp" />
 
         <!-- EditText Horas usada no dia -->
         <EditText

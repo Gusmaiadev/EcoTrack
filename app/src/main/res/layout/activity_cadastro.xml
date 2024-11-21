@@ -94,7 +94,10 @@
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/rounded_input"
                 android:paddingHorizontal="16dp"
-                android:popupBackground="@android:color/white"/>
+                android:popupBackground="@android:color/white"
+                android:spinnerMode="dropdown"
+                style="@android:style/Widget.Spinner"
+                android:dropDownWidth="327dp" />
 
             <EditText
                 android:id="@+id/editEmail"

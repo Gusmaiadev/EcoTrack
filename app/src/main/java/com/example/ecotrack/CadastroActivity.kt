@@ -1,5 +1,7 @@
 package com.example.ecotrack
 
+
+import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -13,6 +15,9 @@ import com.example.ecotrack.data.remote.RetrofitClient
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
 
 class CadastroActivity : AppCompatActivity() {
     private lateinit var editNome: EditText
@@ -22,6 +27,7 @@ class CadastroActivity : AppCompatActivity() {
     private lateinit var editSenha: EditText
     private lateinit var btnCadastrar: Button
     private lateinit var loadingProgressBar: ProgressBar
+    private val calendar = Calendar.getInstance()
 
     private var states: List<State> = emptyList()
 
@@ -31,6 +37,7 @@ class CadastroActivity : AppCompatActivity() {
         setContentView(R.layout.activity_cadastro)
 
         initViews()
+        setupDatePicker()
         setupClickListeners()
         loadStates()
     }
@@ -44,12 +51,40 @@ class CadastroActivity : AppCompatActivity() {
         btnCadastrar = findViewById(R.id.btnCadastrar)
         loadingProgressBar = findViewById(R.id.loadingProgressBar)
 
+        // Desabilita edição manual do campo de data
+        editDataNascimento.isFocusable = false
+        editDataNascimento.isClickable = true
+
         // Handler do botão de login
         findViewById<TextView>(R.id.possui_conta).setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
             finish()
         }
+    }
+
+    private fun setupDatePicker() {
+        val dateSetListener = DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
+            calendar.set(Calendar.YEAR, year)
+            calendar.set(Calendar.MONTH, month)
+            calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+            updateDateInView()
+        }
+
+        editDataNascimento.setOnClickListener {
+            DatePickerDialog(
+                this@CadastroActivity,
+                dateSetListener,
+                calendar.get(Calendar.YEAR),
+                calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.DAY_OF_MONTH)
+            ).show()
+        }
+    }
+
+    private fun updateDateInView() {
+        val format = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        editDataNascimento.setText(format.format(calendar.time))
     }
 
     private fun setupClickListeners() {
@@ -89,9 +124,7 @@ class CadastroActivity : AppCompatActivity() {
     }
 
     private fun setupSpinner(states: List<State>) {
-        // Cria uma lista apenas com os nomes dos estados
         val stateNames = states.map { it.name }
-
         val adapter = ArrayAdapter(
             this,
             android.R.layout.simple_spinner_item,
@@ -110,20 +143,18 @@ class CadastroActivity : AppCompatActivity() {
             val email = editEmail.text.toString().trim()
             val senha = editSenha.text.toString().trim()
 
-            // Validações básicas
             if (nome.isEmpty() || dataNascimento.isEmpty() || estadoSelecionado == null ||
-                email.isEmpty() || senha.isEmpty()) {
+                email.isEmpty() || senha.isEmpty()
+            ) {
                 showToast("Por favor, preencha todos os campos")
                 return
             }
 
-            // Validação básica de email
             if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                 showToast("Por favor, insira um email válido")
                 return
             }
 
-            // Validação de formato da data
             if (!dataNascimento.matches("\\d{4}-\\d{2}-\\d{2}".toRegex())) {
                 showToast("Por favor, insira a data no formato AAAA-MM-DD")
                 return
