@@ -119,9 +119,9 @@ class CadastroEletrodomesticosActivity : AppCompatActivity() {
                 return
             }
 
-            if (horasUsadas > 24) {
+            if (horasUsadas > 1440) {
                 Log.e(TAG, "Hours exceed limit: $horasUsadas")
-                showToast("O número de horas não pode ser maior que 24")
+                showToast("O número de minutos não pode ser maior que 1440")
                 return
             }
 

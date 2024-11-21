@@ -1,6 +1,7 @@
 package com.example.ecotrack.data.remote
 
 import Appliance
+import ConsumptionReport
 import LoginResponse
 import UserApplianceRequest
 import com.example.ecotrack.data.model.LoginRequest
@@ -27,5 +28,8 @@ interface ApiService {
 
     @POST("userAppliance")
     suspend fun registerUserAppliance(@Body request: UserApplianceRequest): Response<Unit>
+
+    @GET("userAppliance/report")
+    suspend fun getConsumptionReport(): Response<ConsumptionReport>
 
 }
