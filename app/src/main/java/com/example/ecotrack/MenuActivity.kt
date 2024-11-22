@@ -1,5 +1,6 @@
 package com.example.ecotrack
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
@@ -15,6 +16,10 @@ import kotlinx.coroutines.withContext
 
 class MenuActivity : AppCompatActivity() {
     private lateinit var consumptionMeter: ConsumptionMeterView
+
+    companion object {
+        private const val CADASTRO_REQUEST_CODE = 100
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,7 +40,7 @@ class MenuActivity : AppCompatActivity() {
 
         findViewById<CardView>(R.id.btnCadastrar).setOnClickListener {
             val intent = Intent(this, CadastroEletrodomesticosActivity::class.java)
-            startActivity(intent)
+            startActivityForResult(intent, CADASTRO_REQUEST_CODE)
         }
 
         findViewById<CardView>(R.id.btnRelatorios).setOnClickListener {
@@ -73,6 +78,13 @@ class MenuActivity : AppCompatActivity() {
                     Toast.LENGTH_SHORT
                 ).show()
             }
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == CADASTRO_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+            loadConsumption() // Recarrega os dados de consumo
         }
     }
 }

@@ -2,13 +2,13 @@ package com.example.ecotrack
 
 import Appliance
 import UserApplianceRequest
+import android.app.Activity
 import android.os.Bundle
 import android.util.Log
 import android.widget.*
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import com.example.ecotrack.R
 import com.example.ecotrack.data.remote.RetrofitClient
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -29,7 +29,7 @@ class CadastroEletrodomesticosActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_cadastro_eletrodomesticos)
-        Log.d(TAG, "Activity Created")
+        Log.d(TAG, "Activity Criada")
 
         initViews()
         loadAppliances()
@@ -37,7 +37,7 @@ class CadastroEletrodomesticosActivity : AppCompatActivity() {
     }
 
     private fun initViews() {
-        Log.d(TAG, "Initializing views")
+        Log.d(TAG, "Inicializando views")
         spinnerEletrodomestico = findViewById(R.id.spinnerEletrodomestico)
         editHorasUsadas = findViewById(R.id.editHorasUsadas)
         editVezesUsado = findViewById(R.id.editVezesUsado)
@@ -49,9 +49,9 @@ class CadastroEletrodomesticosActivity : AppCompatActivity() {
     }
 
     private fun setupListeners() {
-        Log.d(TAG, "Setting up listeners")
+        Log.d(TAG, "Configurando listeners")
         btnCadastrar.setOnClickListener {
-            Log.d(TAG, "Cadastrar button clicked")
+            Log.d(TAG, "Botão cadastrar clicado")
             lifecycleScope.launch {
                 cadastrarEletrodomestico()
             }
@@ -59,43 +59,43 @@ class CadastroEletrodomesticosActivity : AppCompatActivity() {
     }
 
     private fun loadAppliances() {
-        Log.d(TAG, "Starting loadAppliances")
+        Log.d(TAG, "Iniciando carregamento de eletrodomésticos")
         lifecycleScope.launch {
             try {
-                Log.d(TAG, "Making API request")
+                Log.d(TAG, "Fazendo requisição à API")
                 val response = withContext(Dispatchers.IO) {
                     RetrofitClient.apiService.getAppliances()
                 }
 
-                Log.d(TAG, "API Response - Success: ${response.isSuccessful}, Code: ${response.code()}")
+                Log.d(TAG, "Resposta da API - Sucesso: ${response.isSuccessful}, Código: ${response.code()}")
 
                 if (response.isSuccessful) {
                     response.body()?.let { appliancesList ->
-                        Log.d(TAG, "Received appliances: ${appliancesList.size}")
+                        Log.d(TAG, "Eletrodomésticos recebidos: ${appliancesList.size}")
                         appliances = appliancesList
                         val applianceNames = appliancesList.map {
-                            Log.d(TAG, "Appliance: ${it.name}, ID: ${it.id}")
+                            Log.d(TAG, "Eletrodoméstico: ${it.name}, ID: ${it.id}")
                             it.name
                         }
                         setupSpinner(applianceNames)
                     } ?: run {
-                        Log.e(TAG, "Response body is null")
+                        Log.e(TAG, "Corpo da resposta está vazio")
                         showToast("Erro: Lista de eletrodomésticos vazia")
                     }
                 } else {
                     val errorBody = response.errorBody()?.string()
-                    Log.e(TAG, "Error response: $errorBody")
+                    Log.e(TAG, "Resposta de erro: $errorBody")
                     showToast("Erro ao carregar eletrodomésticos: ${response.message()}")
                 }
             } catch (e: Exception) {
-                Log.e(TAG, "Exception in loadAppliances", e)
+                Log.e(TAG, "Exceção em loadAppliances", e)
                 showToast("Erro de conexão: ${e.message}")
             }
         }
     }
 
     private fun setupSpinner(applianceNames: List<String>) {
-        Log.d(TAG, "Setting up spinner with ${applianceNames.size} items")
+        Log.d(TAG, "Configurando spinner com ${applianceNames.size} itens")
         val adapter = ArrayAdapter(
             this,
             android.R.layout.simple_spinner_item,
@@ -107,26 +107,26 @@ class CadastroEletrodomesticosActivity : AppCompatActivity() {
 
     private suspend fun cadastrarEletrodomestico() {
         try {
-            Log.d(TAG, "Starting cadastrarEletrodomestico")
+            Log.d(TAG, "Iniciando cadastro de eletrodoméstico")
             val horasUsadas = editHorasUsadas.text.toString().toDoubleOrNull()
             val vezesUsado = editVezesUsado.text.toString().toIntOrNull()
 
-            Log.d(TAG, "Input values - Hours: $horasUsadas, Days: $vezesUsado")
+            Log.d(TAG, "Valores de entrada - Horas: $horasUsadas, Dias: $vezesUsado")
 
             if (horasUsadas == null || vezesUsado == null) {
-                Log.e(TAG, "Invalid input values")
+                Log.e(TAG, "Valores de entrada inválidos")
                 showToast("Por favor, preencha todos os campos corretamente")
                 return
             }
 
             if (horasUsadas > 1440) {
-                Log.e(TAG, "Hours exceed limit: $horasUsadas")
+                Log.e(TAG, "Minutos excedem o limite: $horasUsadas")
                 showToast("O número de minutos não pode ser maior que 1440")
                 return
             }
 
             if (vezesUsado > 7) {
-                Log.e(TAG, "Days exceed limit: $vezesUsado")
+                Log.e(TAG, "Dias excedem o limite: $vezesUsado")
                 showToast("O número de dias não pode ser maior que 7")
                 return
             }
@@ -134,38 +134,39 @@ class CadastroEletrodomesticosActivity : AppCompatActivity() {
             val selectedPosition = spinnerEletrodomestico.selectedItemPosition
             val selectedAppliance = appliances[selectedPosition]
 
-            Log.d(TAG, "Selected appliance - Position: $selectedPosition, ID: ${selectedAppliance.id}")
+            Log.d(TAG, "Eletrodoméstico selecionado - Posição: $selectedPosition, ID: ${selectedAppliance.id}")
 
             val request = UserApplianceRequest(
                 appliance_id = selectedAppliance.id,
-                minutesUsedPerDay = editHorasUsadas.text.toString().toInt(), // Enviando minutos diretamente
+                minutesUsedPerDay = editHorasUsadas.text.toString().toInt(),
                 daysUsedPerWeek = vezesUsado
             )
 
-            Log.d(TAG, "Sending request: $request")
+            Log.d(TAG, "Enviando requisição: $request")
 
             val response = withContext(Dispatchers.IO) {
                 RetrofitClient.apiService.registerUserAppliance(request)
             }
 
-            Log.d(TAG, "Register response - Success: ${response.isSuccessful}")
+            Log.d(TAG, "Resposta do registro - Sucesso: ${response.isSuccessful}")
 
             if (response.isSuccessful) {
                 showToast("Eletrodoméstico cadastrado com sucesso!")
+                setResult(Activity.RESULT_OK)
                 finish()
             } else {
                 val errorBody = response.errorBody()?.string()
-                Log.e(TAG, "Error registering appliance: $errorBody")
+                Log.e(TAG, "Erro ao registrar eletrodoméstico: $errorBody")
                 showToast("Erro ao cadastrar eletrodoméstico: ${response.message()}")
             }
         } catch (e: Exception) {
-            Log.e(TAG, "Exception in cadastrarEletrodomestico", e)
+            Log.e(TAG, "Exceção em cadastrarEletrodomestico", e)
             showToast("Erro: ${e.message}")
         }
     }
 
     private fun showToast(message: String) {
-        Log.d(TAG, "Showing toast: $message")
+        Log.d(TAG, "Exibindo toast: $message")
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 }

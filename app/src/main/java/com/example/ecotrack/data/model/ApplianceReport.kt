@@ -4,3 +4,4 @@ data class ApplianceReport(
     val quantity: Int,
     val applianceId: Int
 )
+

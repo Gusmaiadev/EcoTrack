@@ -10,9 +10,11 @@ import com.example.ecotrack.data.model.SignupRequest
 import com.example.ecotrack.data.model.State
 import retrofit2.Response
 import retrofit2.http.Body
+import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.PUT
+import retrofit2.http.Path
 
 interface ApiService {
     @POST("auth/signup")
@@ -35,5 +37,8 @@ interface ApiService {
 
     @GET("userAppliance/report/monthYear")
     suspend fun getMonthlyReports(): Response<List<MonthlyReport>>
+
+    @DELETE("userAppliance/{id}")
+    suspend fun deleteUserAppliance(@Path("id") id: Long): Response<Unit>
 
 }

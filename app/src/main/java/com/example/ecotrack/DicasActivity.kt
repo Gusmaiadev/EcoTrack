@@ -14,7 +14,8 @@ class DicasActivity : AppCompatActivity() {
         setContentView(R.layout.activity_dicas)
 
         findViewById<ImageView>(R.id.btnVol).setOnClickListener {
-            finish()
+            val intent = Intent(this, MenuActivity::class.java)
+            startActivity(intent)
         }
 
         findViewById<ImageButton>(R.id.btnGeladeira).setOnClickListener {

@@ -174,14 +174,14 @@
                     android:layout_height="120dp"
                     android:background="@null"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/fogao_btn" />
+                    android:src="@drawable/maquina_btn" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/poppins_medium"
-                    android:text="Fogão"
+                    android:text="Maquina de Lavar"
                     android:textColor="@android:color/white"
                     android:textSize="16sp" />
             </LinearLayout>
