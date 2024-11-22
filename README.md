@@ -77,7 +77,7 @@ A API REST do projeto está disponível em um [repositório separado](https://gi
 - Spring Boot
 - Spring Security com JWT
 - Spring Data JPA
-- PostgreSQL
+- ORACLESQL
 - Maven
 
 ### Arquitetura e Padrões
