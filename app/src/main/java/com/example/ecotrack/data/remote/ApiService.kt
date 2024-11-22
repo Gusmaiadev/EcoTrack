@@ -4,6 +4,7 @@ import Appliance
 import ConsumptionReport
 import LoginResponse
 import MonthlyReport
+import UserApplianceDetail
 import UserApplianceRequest
 import com.example.ecotrack.data.model.LoginRequest
 import com.example.ecotrack.data.model.SignupRequest
@@ -40,5 +41,8 @@ interface ApiService {
 
     @DELETE("userAppliance/{id}")
     suspend fun deleteUserAppliance(@Path("id") id: Long): Response<Unit>
+
+    @GET("userAppliance/user/appliance/{id}")
+    suspend fun getUserAppliancesByType(@Path("id") applianceId: Int): Response<List<UserApplianceDetail>>
 
 }
