@@ -1,6 +1,5 @@
 package com.example.ecotrack
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
@@ -9,22 +8,25 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.lifecycle.lifecycleScope
 import com.example.ecotrack.data.remote.RetrofitClient
+import com.example.ecotrack.interfaces.ConsumptionUpdateListener
 import com.example.ecotrack.view.ConsumptionMeterView
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class MenuActivity : AppCompatActivity() {
+class MenuActivity : AppCompatActivity(), ConsumptionUpdateListener {
     private lateinit var consumptionMeter: ConsumptionMeterView
 
     companion object {
-        private const val CADASTRO_REQUEST_CODE = 100
+        private var instance: MenuActivity? = null
+        fun getInstance(): MenuActivity? = instance
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_menu)
+        instance = this
 
         initViews()
         loadConsumption()
@@ -40,7 +42,7 @@ class MenuActivity : AppCompatActivity() {
 
         findViewById<CardView>(R.id.btnCadastrar).setOnClickListener {
             val intent = Intent(this, CadastroEletrodomesticosActivity::class.java)
-            startActivityForResult(intent, CADASTRO_REQUEST_CODE)
+            startActivity(intent)
         }
 
         findViewById<CardView>(R.id.btnRelatorios).setOnClickListener {
@@ -81,10 +83,12 @@ class MenuActivity : AppCompatActivity() {
         }
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == CADASTRO_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
-            loadConsumption() // Recarrega os dados de consumo
-        }
+    override fun onConsumptionUpdated() {
+        loadConsumption()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        instance = null
     }
 }

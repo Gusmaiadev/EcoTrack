@@ -6,11 +6,7 @@ import UserApplianceDetail
 import android.app.Dialog
 import android.os.Bundle
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.lifecycle.lifecycleScope
@@ -198,6 +194,8 @@ class MeuConsumoActivity : AppCompatActivity() {
                         Toast.LENGTH_SHORT
                     ).show()
                     loadConsumptionReport() // Recarrega os dados
+                    // Notifica o MenuActivity para atualizar o medidor
+                    MenuActivity.getInstance()?.onConsumptionUpdated()
                 } else {
                     Toast.makeText(
                         this@MeuConsumoActivity,
