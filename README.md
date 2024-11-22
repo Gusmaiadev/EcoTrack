@@ -29,7 +29,7 @@ A API REST do projeto está disponível em um [repositório separado](https://gi
 - Spring Boot
 - Spring Security (JWT)
 - Spring Data JPA
-- PostgreSQL
+- ORACLESQL
 - Maven
 
 ## Funcionalidades Principais
